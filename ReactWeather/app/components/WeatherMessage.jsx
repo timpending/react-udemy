@@ -1,11 +1,12 @@
 const React = require('react');
 
-class WeatherMessage extends React.Component {
+const WeatherMessage = React.createClass({
   render() {
+    var {temp, location} = this.props;
     return (
-      <p>This is where the temperature goes.</p>
+      <p>It is currently {temp} F in {location}.</p>
     );
   }
-};
+});
 
 module.exports = WeatherMessage;

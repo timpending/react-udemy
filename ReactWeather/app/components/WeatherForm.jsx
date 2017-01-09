@@ -1,11 +1,20 @@
 const React = require('react');
 
-class WeatherForm extends React.Component {
+const WeatherForm = React.createClass({
+  onFormSubmit(e){
+    e.preventDefault();
+    var location = this.refs.location.value;
+
+    if (location.length > 0){
+      this.refs.location.value = '';
+      this.props.onSearch(location);
+    }
+  },
   render() {
     return (
-      <form>
+      <form onSubmit={this.onFormSubmit}>
         <div>
-          <input placeholder="Type a city in here." type="text"/>
+          <input placeholder="Type a city in here." type="text" ref="location" />
         </div>
         <div>
           <button>Get Your Weather!</button>
@@ -13,6 +22,6 @@ class WeatherForm extends React.Component {
       </form>
     );
   }
-};
+});
 
 module.exports = WeatherForm;
